@@ -1,8 +1,35 @@
 {
-'solver': ['saga'], # saga is the only solver that supports the 'elasticnet' penalty
-'penalty': ['elasticnet'], # use elasticnet penalty
-'l1_ratio': [0.1, 0.5, 0.9], # controls the balance between L1 and L2 regularization
-'max_iter': [2000, 5000, 10000], # increased the max_iter to allow more iterations for convergence
-'C': [0.001, 0.01, 0.1, 1.0], # regularization strength; smaller values are stronger regularization
-'tol': [1e-5, 1e-4, 1e-3], # tolerance for stopping criteria
+# --- Feature selection (SelectKBest) ---
+# used only to modify selected SKB behavior
+'feature_selection__k': [25, 50], # number of top features to select based on univariate scores
+'feature_selection__score_func': [mutual_info_classif], # scoring function estimating mutual information for classification tasks
+
+# --- Feature selection (SelectFromModel with L1 Logistic Regression) ---
+# used only to modify laSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all features with non-zero weights (no threshold cutoff)
+#'feature_selection__max_features': [25, 50], # number of features retained after selection
+#'feature_selection__estimator__C': [0.1, 1.0], # inverse regularization strength controlling sparsity
+#'feature_selection__estimator__max_iter': [300], # maximum iterations for convergence
+
+# --- Feature selection (SelectFromModel with ElasticNet Logistic Regression) ---
+# used only to modify enSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all non-zero weighted features (no threshold cutoff)
+#'feature_selection__max_features': [25, 50], # number of retained features after selection
+#'feature_selection__estimator__l1_ratio': [0.5], # mix of L1/L2 regularization
+#'feature_selection__estimator__C': [1.0], # inverse regularization strength
+
+# --- Feature selection (SelectFromModel with RandomForestClassifier) ---
+# used only to modify rfSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all non-zero importance features
+#'feature_selection__max_features': [25, 50], # limit the number of features kept based on feature importance
+#'feature_selection__estimator__n_estimators': [200], # number of trees
+#'feature_selection__estimator__max_depth': [5, 10], # tree depth control
+
+# --- Model tuning (LogisticRegression) ---
+# used only to modify LR behavior
+'model__solver': ['saga'], # solver supporting elasticnet
+'model__penalty': ['elasticnet'], # combined L1/L2 regularization
+'model__l1_ratio': [0.3, 0.5, 0.7], # L1/L2 balance
+'model__C': [0.01, 0.1, 1.0], # inverse regularization strength
+'model__max_iter': [5000] # iterations for convergence
 }

@@ -1,10 +1,35 @@
 {
-'criterion': ['gini', 'entropy'], # criteria to split the tree (Gini impurity or Entropy)
-'splitter': ['best', 'random'], # splitter for deciding how to split at each node
-'max_depth': [None, 5, 10, 15, 20], # maximum depth of the tree
-'min_samples_split': [2, 5, 10], # minimum number of samples required to split an internal node
-'min_samples_leaf': [1, 5, 10], # minimum number of samples required to be at a leaf node
-'max_features': ['sqrt', 'log2', None], # number of features to consider at each split
-'max_leaf_nodes': [None, 10, 20], # maximum number of leaf nodes
-'random_state': [42] # for reproducibility
+# --- Feature selection (SelectKBest) ---
+# used only to modify selected SKB behavior
+#'feature_selection__k': [25, 50], # number of top features to select based on univariate scores
+#'feature_selection__score_func': [mutual_info_classif], # scoring function estimating mutual information for classification tasks
+
+# --- Feature selection (SelectFromModel with L1 Logistic Regression) ---
+# used only to modify laSFM behavior
+'feature_selection__threshold': [-float('inf')], # keep all features with non-zero weights (no threshold cutoff)
+'feature_selection__max_features': [25, 50], # number of features retained after selection
+'feature_selection__estimator__C': [0.1, 1.0], # inverse regularization strength controlling sparsity
+'feature_selection__estimator__max_iter': [300], # maximum iterations for convergence
+
+# --- Feature selection (SelectFromModel with ElasticNet Logistic Regression) ---
+# used only to modify enSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all non-zero weighted features (no threshold cutoff)
+#'feature_selection__max_features': [25, 50], # number of retained features after selection
+#'feature_selection__estimator__l1_ratio': [0.5], # mix of L1/L2 regularization
+#'feature_selection__estimator__C': [1.0], # inverse regularization strength
+
+# --- Feature selection (SelectFromModel with RandomForestClassifier) ---
+# used only to modify rfSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all non-zero importance features
+#'feature_selection__max_features': [25, 50], # limit the number of features kept based on feature importance
+#'feature_selection__estimator__n_estimators': [200], # number of trees
+#'feature_selection__estimator__max_depth': [5, 10], # tree depth control
+
+# --- Model tuning (DecisionTree) ---
+# used only to modify DT behavior
+'model__criterion': ['gini', 'entropy'], # function to measure split quality
+'model__max_depth': [None, 10, 20], # maximum depth of the tree
+'model__min_samples_split': [2, 5], # minimum samples to split a node
+'model__min_samples_leaf': [1, 2], # minimum samples at a leaf node
+'model__random_state': [42] # for reproducibility
 }

@@ -1,15 +1,25 @@
 scores	parameters
-0.9	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 7
-0.875	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 8
-0.8875	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 9
-0.85625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 10
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 11
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 12
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 13
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 14
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 15
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 16
-0.8625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 17
-0.85625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 18
-0.85625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 19
-0.85625	'algorithm': 'auto', 'leaf_size': 30, 'metric': 'minkowski', 'n_neighbors': 20
+0.90625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 5, 'model__p': 1
+0.90625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 11, 'model__p': 1
+0.90625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 5, 'model__p': 2
+0.90625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 5, 'model__p': 1
+0.90625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 5, 'model__p': 2
+0.90625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 11, 'model__p': 1
+0.9	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 11, 'model__p': 2
+0.89375	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 11, 'model__p': 2
+0.8875	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 11, 'model__p': 1
+0.8875	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 17, 'model__p': 1
+0.88125	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 11, 'model__p': 2
+0.88125	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 11, 'model__p': 1
+0.88125	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 17, 'model__p': 2
+0.88125	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 5, 'model__p': 2
+0.875	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 17, 'model__p': 1
+0.875	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 17, 'model__p': 2
+0.875	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 5, 'model__p': 1
+0.86875	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 11, 'model__p': 2
+0.8625	'feature_selection__k': 50, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 17, 'model__p': 2
+0.8625	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 17, 'model__p': 2
+0.85625	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 17, 'model__p': 1
+0.85625	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 17, 'model__p': 1
+0.84375	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'euclidean', 'model__n_neighbors': 5, 'model__p': 1
+0.83125	'feature_selection__k': 25, 'feature_selection__score_func': <function mutual_info_classif at 0x7fa40a8a09a0>, 'model__metric': 'manhattan', 'model__n_neighbors': 5, 'model__p': 2

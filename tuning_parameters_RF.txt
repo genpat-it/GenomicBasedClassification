@@ -1,7 +1,35 @@
 {
-'n_estimators': [50, 100, 200], # reasonable choices for number of trees
-'max_depth': [10, 15, 20],  # limit max_depth
-'min_samples_split': [2, 5, 10], # adjust this to avoid overfitting
-'max_features': ['sqrt', 'log2'], # limit number of features used in each tree
-'bootstrap': [True, False] # control bootstrapping
+# --- Feature selection (SelectKBest) ---
+# used only to modify selected SKB behavior
+'feature_selection__k': [25, 50], # number of top features to select based on univariate scores
+'feature_selection__score_func': [mutual_info_classif], # scoring function estimating mutual information for classification tasks
+
+# --- Feature selection (SelectFromModel with L1 Logistic Regression) ---
+# used only to modify laSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all features with non-zero weights (no threshold cutoff)
+#'feature_selection__max_features': [25, 50], # number of features retained after selection
+#'feature_selection__estimator__C': [0.1, 1.0], # inverse regularization strength controlling sparsity
+#'feature_selection__estimator__max_iter': [300], # maximum iterations for convergence
+
+# --- Feature selection (SelectFromModel with ElasticNet Logistic Regression) ---
+# used only to modify enSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all non-zero weighted features (no threshold cutoff)
+#'feature_selection__max_features': [25, 50], # number of retained features after selection
+#'feature_selection__estimator__l1_ratio': [0.5], # mix of L1/L2 regularization
+#'feature_selection__estimator__C': [1.0], # inverse regularization strength
+
+# --- Feature selection (SelectFromModel with RandomForestClassifier) ---
+# used only to modify rfSFM behavior
+#'feature_selection__threshold': [-float('inf')], # keep all non-zero importance features
+#'feature_selection__max_features': [25, 50], # limit the number of features kept based on feature importance
+#'feature_selection__estimator__n_estimators': [200], # number of trees
+#'feature_selection__estimator__max_depth': [5, 10], # tree depth control
+
+# --- Model tuning (RandomForestClassifier) ---
+# used only to modify RF behavior
+'model__n_estimators': [100], # number of trees
+'model__max_depth': [10, 20], # tree depth
+'model__min_samples_split': [2], # split threshold
+'model__max_features': ['sqrt'], # feature selection
+'model__bootstrap': [True] # resampling
 }

@@ -1,26 +1,26 @@
-########################
-####### context  #######
-########################
-The scikit-learn (sklearn) Python library-based workflow was inspired by an older caret R library-based version (https://doi.org/10.1186/s12864-023-09667-w), incorporating the independence of modeling (i.e. training and testing) and prediction (i.e. based on a pre-built model), the management of classification parameters, and the estimation of probabilities associated with predictions.
-########################
-###### reference  ######
-########################
+###########################
+######### context #########
+###########################
+The scikit-learn (sklearn)-based Python workflow is inspired by an older caret-based R workflow (https://doi.org/10.1186/s12864-023-09667-w), independently supports both modeling (i.e., training and testing) and prediction (i.e., based on a pre-built model), and implements 4 feature selection methods, 14 model classifiers, hyperparameter tuning, performance metric computation, feature and permutation importance analyses, prediction probability estimation, execution monitoring via progress bars, and parallel processing.
+###########################
+######## reference ########
+###########################
 Pierluigi Castelli, Andrea De Ruvo, Andrea Bucciacchio, Nicola D'Alterio, Cesare Camma, Adriano Di Pasquale and Nicolas Radomski (2023) Harmonization of supervised machine learning practices for efficient source attribution of Listeria monocytogenes based on genomic data. 2023, BMC Genomics, 24(560):1-19, https://doi.org/10.1186/s12864-023-09667-w
-########################
-##### repositories #####
-########################
+###########################
+###### repositories  ######
+###########################
 Please cite:
  GitHub (https://github.com/Nicolas-Radomski/GenomicBasedClassification),
  Docker Hub (https://hub.docker.com/r/nicolasradomski/genomicbasedclassification),
  and/or Anaconda Hub (https://anaconda.org/nicolasradomski/genomicbasedclassification).
-########################
-### acknowledgements ###
-########################
-Many thanks to Andrea De Ruvo and Adriano Di Pasquale for the insightful discussions that helped improve the algorithm.
-########################
-####### versions #######
-########################
-GenomicBasedClassification: 1.1.0 (released in May 2025)
+###########################
+#### acknowledgements  ####
+###########################
+Many thanks to Andrea De Ruvo, Adriano Di Pasquale and ChatGPT for the insightful discussions that helped improve the algorithm.
+###########################
+######## versions  ########
+###########################
+GenomicBasedClassification: 1.2.0 (released in November 2025)
 python: 3.12
 argparse: 1.1
 pickle: 4.0
@@ -29,66 +29,78 @@ imblearn: 0.13.0
 sklearn: 1.5.2
 xgboost: 2.1.3
 numpy: 1.26.4
-joblib: 1.4.2
+joblib: 1.5.1
 tqdm: 4.67.1
 tqdm-joblib: 0.0.4
-########################
-####### arguments ######
-########################
+catboost: 1.2.8
+###########################
+######## arguments  #######
+###########################
 subcommand: prediction
 inputpath_mutations: genomic_profiles_for_prediction.tsv
-inputpath_model: MyDirectory/RF_FirstAnalysis_model.obj
 inputpath_features: MyDirectory/RF_FirstAnalysis_features.obj
-inputpath_encoded_features: MyDirectory/RF_FirstAnalysis_encoded_features.obj
-inputpath_encoded_classes: None
+inputpath_feature_encoder: MyDirectory/RF_FirstAnalysis_feature_encoder.obj
+inputpath_model: MyDirectory/RF_FirstAnalysis_model.obj
+inputpath_class_encoder: None
 outputpath: MyDirectory
 prefix: RF_SecondAnalysis
+digits: 6
 debug: 20
 warnings: False
 nocheck: False
-########################
-######## checks ########
-########################
-The warnings were ignored
+###########################
+######### checks  #########
+###########################
 The traceback level was set to 20
+The warnings were ignored
 The recommended versions of Python and packages were properly controlled
-The number of expected rows (i.e. >= 1) and columns (i.e. >= 4) of the input file of mutations was properly controled (i.e. 20 and 12 , respectively)
-The encoded classes were not provided
-The classifier of the provided best model was properly recognized: RandomForestClassifier
-The classifier of the provided best model was verified for compatibility with encoded classes, which are only used for the XGB classifier
+The prediction subcommand was used
+The minimum required number of samples in the dataset (i.e., >= 1) and the expected number of columns (i.e., >= 3) in the input file of mutations were properly controlled (i.e., 20 and 12 , respectively)
+The class encoder were not provided
+The input tested mutations include all features required by the trained one-hot encoder
+The following unexpected features in the input tested mutations will be ignored for one-hot encoding: ['L_11']
+The encoded features between training and prediction datasets were confirmed as identical
+The 10 provided features were one-hot encoded into 80 encoded features
+The pipeline expected 50 one-hot encoded features to perform prediction
+The provided best model harbored 3 classes: 'fruit', 'pig', 'poultry'
+The pipeline components of the provided best model were properly recognized: Pipeline(steps=[('feature_selection', SelectKBest(k=50, score_func=<function mutual_info_classif at 0x7f89366549a0>)), ('model', RandomForestClassifier(max_depth=10, n_jobs=1))])
+The one-hot encoded prediction matrix was reindexed and aligned to match the exact feature names and order expected by the trained pipeline
+The classifier of the provided best model was verified for compatibility with class encoder, which are only used for the XGB classifier
 The output directory already existed
-########################
-###### execution #######
-########################
-The script started on 2025-05-08 15:44:22.464456
-The script stoped on 2025-05-08 15:44:22.486468
-The script lasted 0 days, 0 hrs, 0 mins and 0.02 secs
-########################
-##### output files #####
-########################
+###########################
+####### execution  ########
+###########################
+The script started on 2025-11-05 09:39:50.989769
+The script stoped on 2025-11-05 09:39:51.023215
+The script lasted 0 days, 0 hrs, 0 mins and 0.03 secs (i.e., 0.03 secs in total)
+###########################
+###### output  files ######
+###########################
 MyDirectory/RF_SecondAnalysis_prediction.tsv
 MyDirectory/RF_SecondAnalysis_prediction_log.txt
-########################
-## prediction dataset ##
-########################
+###########################
+### prediction  dataset ###
+###########################
  sample prediction    fruit      pig  poultry
-S2.1.01        pig 0.040000 0.950769 0.009231
-S2.1.02        pig 0.043333 0.813523 0.143144
-S2.1.03    poultry 0.065714 0.054286 0.880000
-S2.1.04        pig 0.056132 0.890556 0.053311
-S2.1.05      fruit 0.491537 0.215604 0.292859
-S2.1.06    poultry 0.041905 0.057143 0.900952
-S2.1.07        pig 0.201429 0.731429 0.067143
-S2.1.08    poultry 0.040000 0.020000 0.940000
-S2.1.09        pig 0.072571 0.917245 0.010183
-S2.1.10        pig 0.197222 0.801825 0.000952
-S2.1.11    poultry 0.020000 0.020000 0.960000
-S2.1.12        pig 0.045000 0.955000 0.000000
-S2.1.13    poultry 0.081429 0.079341 0.839231
-S2.1.14      fruit 0.869412 0.083529 0.047059
-S2.1.15      fruit 0.865714 0.110286 0.024000
-S2.1.16      fruit 0.748095 0.236429 0.015476
-S2.1.17        pig 0.084676 0.585285 0.330038
-S2.1.18      fruit 0.885714 0.094286 0.020000
-S2.1.19      fruit 0.900000 0.100000 0.000000
-S2.1.20      fruit 0.865714 0.110286 0.024000
+S2.1.01        pig 0.012000 0.986000 0.002000
+S2.1.02        pig 0.012000 0.873616 0.114384
+S2.1.03    poultry 0.050000 0.042000 0.908000
+S2.1.04        pig 0.070000 0.900000 0.030000
+S2.1.05    poultry 0.298794 0.279812 0.421394
+S2.1.06    poultry 0.041714 0.052857 0.905429
+S2.1.07        pig 0.041714 0.907558 0.050728
+S2.1.08    poultry 0.035714 0.052857 0.911429
+S2.1.09        pig 0.012000 0.978000 0.010000
+S2.1.10        pig 0.412054 0.587946 0.000000
+S2.1.11    poultry 0.025714 0.032857 0.941429
+S2.1.12        pig 0.010000 0.980000 0.010000
+S2.1.13    poultry 0.012000 0.106000 0.882000
+S2.1.14      fruit 0.740000 0.206083 0.053917
+S2.1.15      fruit 0.854000 0.113500 0.032500
+S2.1.16        pig 0.143184 0.471438 0.385377
+S2.1.17      fruit 0.681714 0.268940 0.049345
+S2.1.18      fruit 0.814000 0.124750 0.061250
+S2.1.19      fruit 0.790000 0.171583 0.038417
+S2.1.20      fruit 0.854000 0.113500 0.032500
+Note: Up to 20 results are displayed in the log for monitoring purposes, while the full set of results is available in the output files. 
+Note: The p-values are reported for each phenotype of interest. 
